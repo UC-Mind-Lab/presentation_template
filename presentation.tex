@@ -1,0 +1,144 @@
+\documentclass[handout,8pt]{beamer}
+
+% Choose how your presentation looks.
+%
+% For more themes, color themes and font themes, see:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+%
+\mode<presentation>
+{
+  \usetheme{Darmstadt}      % or try Darmstadt, Madrid, Warsaw, ...
+  \usecolortheme{beaver} % or try albatross, beaver, crane, ...
+  \usefonttheme{serif}  % or try serif, structurebold, ...
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+} 
+
+% *** Formatting Packaages ***
+\usepackage{bookmark}
+
+% *** Citation Packages ***
+\usepackage[citecounter,labelnumber,backend=biber,bibencoding=utf8,sorting=none]{biblatex}
+\addbibresource{./bibliography.bib}
+
+% *** Code Blocks Packages ***
+\usepackage{listings}
+\usepackage{xcolor}
+%New colors defined below
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{1.0,1.0,1.0}
+\lstset{frame=tb,
+  backgroundcolor=\color{backcolour},
+  commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\tiny,
+  breakatwhitespace=false, 
+  breaklines=true,          
+  captionpos=b,
+  keepspaces=true,
+  numbersep=5pt,
+  numbers=left,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2
+}
+% *** Diagram Drawing ***
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+% *** File Organization Packages ***
+\usepackage{subfiles}
+% *** FONT PACKAGES ***
+\usepackage[T1]{fontenc}
+% *** MATH PACKAGES ***
+\usepackage{amsmath}
+\interdisplaylinepenalty=2500
+\usepackage{amssymb}
+% *** GRAPHICS PACKAGES ***
+\usepackage [export]{adjustbox} % Frame around figures (via the frame option in includegraphic)
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{media9}
+\usepackage[font=small,skip=0pt]{caption}
+\usepackage{tabularx}
+\usepackage{subcaption}
+
+% *** Table Packages ***
+\usepackage{multirow}
+
+% *** Unosrted Packages ***
+\usepackage[absolute,overlay]{textpos}
+  \setlength{\TPHorizModule}{1mm}
+  \setlength{\TPVertModule}{1mm}
+%\newcolumntype{b}{X}
+\newcolumntype{s}{>{\hsize=.5\hsize}X}
+
+
+% Custom Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% https://tex.stackexchange.com/questions/26682/how-to-create-a-citejournal-citebooktitle-cite-command-in-biblatex
+\DeclareCiteCommand{\citejournal}
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+    \usebibmacro{journal}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\newcommand{\prettycite}[1]{%
+  \citetitle{#1} (\citejournal{#1}--\citeyear{#1})\cite{#1}
+}
+
+% Title Page Info %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Summary of Work}
+\subtitle{Project: "PROJECT NAME"}
+\author[Tyler]{Tyler Westland}
+
+\date{\today}
+\logo{\includegraphics[height=1.0cm]{imgs/uc_logo.png}}
+
+% Start of Document
+\begin{document}
+    % New Section %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \section{Introduction}
+    
+    \begin{frame}
+        \centering
+        \titlepage
+    \end{frame}
+
+    % New Section %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \section{Last Week}
+    \begin{frame}{Last Week}
+      \begin{itemize}
+        \item What I did: \prettycite{tylerWestlandPastResearch}.
+      \end{itemize}
+    \end{frame}
+
+    % New Section %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \section{This Week}
+    \begin{frame}{This Week}
+      \begin{itemize}
+        \item What I'm going to do:
+          \prettycite{tylerWestlandFutureResearch}.
+      \end{itemize}
+    \end{frame}
+
+    % New Section %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \section{New Data}
+    \begin{frame}{New Data}
+      \begin{itemize}
+        \item More details about what I did
+          \cite{tylerWestlandPastResearch}.
+      \end{itemize}
+    \end{frame}
+    
+    % New Section %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{frame}[allowframebreaks]
+      \frametitle{References}
+      \printbibliography
+    \end{frame}
+
+\end{document}
