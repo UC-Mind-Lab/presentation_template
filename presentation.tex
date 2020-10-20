@@ -19,7 +19,8 @@
 
 % *** Citation Packages ***
 \usepackage[citecounter,labelnumber,backend=biber,bibencoding=utf8,sorting=none]{biblatex}
-\addbibresource{./bibliography.bib}
+\addbibresource{./bibliography.bib} % Specify bibliography file
+\setbeamertemplate{bibliography item}{\insertbiblabel} % Number references
 
 % *** Code Blocks Packages ***
 \usepackage{listings}
